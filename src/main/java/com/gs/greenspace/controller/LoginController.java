@@ -1,34 +1,25 @@
 package com.gs.greenspace.controller;
-
 import com.gs.greenspace.dto.request.LoginRequestDto;
 import com.gs.greenspace.dto.response.LoginResponseDto;
 import com.gs.greenspace.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/api/login")
 @CrossOrigin(origins = "*")
+@RestController
+@RequestMapping("/api/admin")
 public class LoginController {
 
     @Autowired
     private LoginService loginService;
 
-    @PostMapping("/authenticate")
-    public ResponseEntity<LoginResponseDto> authenticate(@RequestBody LoginRequestDto loginRequestDto) {
+    @PostMapping("/register")
+    public LoginResponseDto register(@RequestBody LoginRequestDto loginRequestDto) {
+        return loginService.register(loginRequestDto);
+    }
 
-        LoginResponseDto response = loginService.authenticate(loginRequestDto);
-
-        if (response.isSuccess()) {
-            return ResponseEntity.ok(response);
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
-        }
+    @PostMapping("/login")
+    public LoginResponseDto login(@RequestBody LoginRequestDto loginRequestDto) {
+        return loginService.login(loginRequestDto);
     }
 }

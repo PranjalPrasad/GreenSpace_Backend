@@ -1,26 +1,18 @@
 package com.gs.greenspace.dto.response;
-
 public class LoginResponseDto {
-
-    private boolean success;
     private String message;
+    private boolean success;
     private String username;
+    private Long userId;
 
     public LoginResponseDto() {
     }
 
-    public LoginResponseDto(boolean success, String message, String username) {
-        this.success = success;
+    public LoginResponseDto(String message, boolean success, String username, Long userId) {
         this.message = message;
-        this.username = username;
-    }
-
-    public boolean isSuccess() {
-        return success;
-    }
-
-    public void setSuccess(boolean success) {
         this.success = success;
+        this.username = username;
+        this.userId = userId;
     }
 
     public String getMessage() {
@@ -31,11 +23,27 @@ public class LoginResponseDto {
         this.message = message;
     }
 
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
     public String getUsername() {
         return username;
     }
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

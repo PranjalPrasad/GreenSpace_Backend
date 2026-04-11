@@ -1,6 +1,6 @@
 package com.gs.greenspace.dto.request;
-public class LoginRequestDto {
 
+public class LoginRequestDto {
     private String username;
     private String password;
 
